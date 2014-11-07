@@ -1,48 +1,24 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    open = require('gulp-open'),
-    connect = require('gulp-connect'),
-    watch = require('gulp-watch');
+    nodemon = require('nodemon'),
+    open = require('gulp-open');
 
-var SCSS_FILES = './app/styles/scss/**/*.scss';
-var CSS_FOLDER = './app/styles/css';
-var HTML_FILES = './app/**/*.html';
-var JS_FILES = './app/js/**/*.js';
 
-gulp.task('connect', function() {
-    connect.server({
-        root: 'app',
-        livereload: true
-    });
+gulp.task('nodeWatch', function () {
+    nodemon({
+        script: 'server.js',
+        ignore: ['scripts/', 'styles/', 'gulpfile.js']
+    })
+        .on('restart', function () {
+            console.log('restarting node server');
+        })
+        .on('crash', function () {
+            console.log('\nNode has crashed - will restart after next save.');
+        });
 });
 
-gulp.task('watch', ['connect', 'scssWatch', 'htmlJsWatch'], function() {
-    gulp.src('./app/index.html')
+gulp.task('watch', ['nodeWatch'], function () {
+    gulp.src('./index.html')
         .pipe(open('', {
-            url: 'localhost:8080'
+            url: 'http://localhost:3000'
         }));
 });
-
-gulp.task('scssWatch', function() {
-    watch(SCSS_FILES)
-        .pipe(sass({
-            onError: function(err) {
-                console.log('you call that scss? check out this error: \n', err);
-            }
-        }))
-        .pipe(gulp.dest(CSS_FOLDER))
-        .pipe(connect.reload());
-});
-
-gulp.task('htmlJsWatch', function() {
-    watch( [HTML_FILES, JS_FILES] );
-
-    watch(HTML_FILES)
-        .pipe(connect.reload());
-
-    watch(JS_FILES)
-        .pipe(connect.reload());
-});
-
-
-gulp.task('compile', ['']);
