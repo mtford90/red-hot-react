@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 
+
 module.exports = {
     // Entry point for static analyzer:
     entry: [
@@ -31,8 +32,30 @@ module.exports = {
 
     module: {
         loaders: [
-            // Pass *.jsx files through jsx-loader transform
-            {test: /\.jsx$/, loaders: ['react-hot', 'jsx'] }
+            {
+                test: /\.jsx$/,
+                loaders: ['react-hot', 'jsx']
+            },
+            {
+                test: /\.scss$/,
+                loader: "style!css!sass?outputStyle=expanded"
+            },
+            {
+                test: /\.woff$/,
+                loader: "url-loader?limit=10000&minetype=application/font-woff"
+            },
+            {
+                test: /\.ttf$/,
+                loader: "file-loader"
+            },
+            {
+                test: /\.eot$/,
+                loader: "file-loader"
+            },
+            {
+                test: /\.svg$/,
+                loader: "file-loader"
+            }
         ]
     }
 };

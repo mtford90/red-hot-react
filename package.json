@@ -19,7 +19,9 @@
   "devDependencies": {
     "body-parser": "^1.9.2",
     "browserify": "^6.2.0",
+    "css-loader": "^0.9.0",
     "express": "^4.10.1",
+    "file-loader": "^0.8.1",
     "gulp": "^3.8.10",
     "gulp-browserify": "^0.5.0",
     "gulp-connect": "^2.2.0",
@@ -30,6 +32,9 @@
     "gulp-watch": "^1.1.0",
     "jsx-loader": "^0.12.1",
     "react-hot-loader": "^0.5.0",
+    "sass-loader": "^0.3.0",
+    "style-loader": "^0.8.2",
+    "url-loader": "^0.5.5",
     "webpack": "^1.4.13",
     "webpack-dev-server": "^1.6.5"
   },
