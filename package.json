@@ -29,6 +29,8 @@
     "gulp-watch": "^1.1.0",
     "jest": "^0.1.37",
     "jsx-loader": "^0.12.1",
+    "less": "^1.7.5",
+    "less-loader": "^0.7.7",
     "nodemon": "^1.2.1",
     "open": "0.0.5",
     "react-hot-loader": "^0.5.0",

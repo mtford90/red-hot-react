@@ -16,11 +16,11 @@ app.all('/*', function (req, res, next) {
     next();
 });
 
-app.listen(conf.webPackPort);
+app.listen(conf.webPack.port);
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
-    quiet: true
+    quiet: conf.webPack.silent
 }).listen(conf.port, 'localhost', function (err, result) {
         if (err) {
             console.error(err);

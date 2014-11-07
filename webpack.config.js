@@ -38,6 +38,22 @@ module.exports = {
                 loader: "style!css!sass?outputStyle=expanded"
             },
             {
+                test: /\.sass$/,
+                loader: "style!css!sass?outputStyle=expanded"
+            },
+            {
+                test: /\.sass$/,
+                loader: "style!css!sass?outputStyle=expanded"
+            },
+            {
+                test: /\.css$/,
+                loader: "style-loader!css-loader"
+            },
+            {
+                test: /\.less$/,
+                loader: "style-loader!css-loader!less-loader"
+            },
+            {
                 test: /\.woff$/,
                 loader: "url-loader?limit=10000&minetype=application/font-woff"
             },
