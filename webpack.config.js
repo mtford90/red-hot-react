@@ -1,5 +1,5 @@
 var webpack = require('webpack'),
-    conf = require('./build.config'),
+    conf = require('./dev.config'),
     _ = require('underscore');
 
 

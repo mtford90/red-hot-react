@@ -4,11 +4,11 @@ var express = require('express')
     , webpack = require('webpack')
     , WebpackDevServer = require('webpack-dev-server')
     , config = require('./webpack.config')
-    , conf = require('./build.config');
+    , conf = require('./dev.config')
+    , open = require("open");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-if (conf.livereload.enabled) app.use(require('connect-livereload')({port: conf.livereload.port}));
 
 app.all('/*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:' + conf.port.toString());
@@ -19,10 +19,11 @@ app.all('/*', function (req, res, next) {
 app.listen(conf.webPackPort);
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
-    hot: true
+    hot: true,
+    quiet: true
 }).listen(conf.port, 'localhost', function (err, result) {
         if (err) {
-            console.log(err);
+            console.error(err);
         }
-        console.log('Listening at localhost:3000');
+        open('http://localhost:' + conf.port.toString())
     });

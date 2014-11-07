@@ -4,7 +4,9 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     taskListing = require('gulp-task-listing'),
     _ = require('underscore'),
-    conf = require('./build.config');
+    open = require('gulp-open'),
+    conf = require('./dev.config'),
+    dnode = require('dnode');
 
 /**
  * Construct glob for all js/specs in the project so can run tests everytime this changes.
@@ -51,7 +53,13 @@ gulp.task('test', function () {
     return test();
 });
 
-gulp.task('watch', ['watch-js', 'watch-server']);
+gulp.task('watch', ['watch-js', 'watch-server'], function () {
+    //gulp.src('./index.html')
+    //    .pipe(open('', {
+    //        url: 'http://localhost:' + conf.port
+    //    }));
+});
+
 gulp.task('watch-server', function () {
     var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js');
     nodemon({
@@ -63,7 +71,7 @@ gulp.task('watch-server', function () {
         })
         .on('crash', function () {
             console.log('\nNode has crashed - will restart after next save.');
-        })
+        });
 });
 gulp.task('watch-js', function () {
     gulp.src(JS_FILES).pipe(watch(JS_FILES, function () {
