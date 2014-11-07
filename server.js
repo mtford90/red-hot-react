@@ -25,5 +25,7 @@ new WebpackDevServer(webpack(config), {
         if (err) {
             console.error(err);
         }
-        open('http://localhost:' + conf.port.toString())
+        if (conf.open) {
+            open('http://localhost:' + conf.port.toString())
+        }
     });

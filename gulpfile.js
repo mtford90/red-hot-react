@@ -5,8 +5,7 @@ var gulp = require('gulp'),
     taskListing = require('gulp-task-listing'),
     _ = require('underscore'),
     open = require('gulp-open'),
-    conf = require('./dev.config'),
-    dnode = require('dnode');
+    conf = require('./dev.config');
 
 /**
  * Construct glob for all js/specs in the project so can run tests everytime this changes.
@@ -53,12 +52,7 @@ gulp.task('test', function () {
     return test();
 });
 
-gulp.task('watch', ['watch-js', 'watch-server'], function () {
-    //gulp.src('./index.html')
-    //    .pipe(open('', {
-    //        url: 'http://localhost:' + conf.port
-    //    }));
-});
+gulp.task('watch', ['watch-js', 'watch-server']);
 
 gulp.task('watch-server', function () {
     var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js');

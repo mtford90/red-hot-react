@@ -23,8 +23,6 @@ module.exports = {
     port: 3000,
     // (this is the actual port that runs the dev server, but webpack sort of hijacks it to serve intermediate files)
     webPackPort: 3001,
-    // dnode is used for IPC between dev server and gulp
-    dnode: {
-        port: 5004
-    }
+    // Open browser on watch?
+    open: true
 };
