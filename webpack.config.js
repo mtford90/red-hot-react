@@ -1,17 +1,22 @@
-var webpack = require('webpack');
+var webpack = require('webpack'),
+    conf = require('./build.config'),
+    _ = require('underscore');
 
+
+var ext = _.map(conf.ext.js, function (x) {return '.' + x});
+ext = ext.concat('');
 
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
+        'webpack-dev-server/client?http://localhost:' + conf.port.toString(),
         'webpack/hot/dev-server',
-        './scripts/app'
+        conf.entry
     ],
 
     output: {
         path: __dirname,
         filename: 'bundle.js',
-        publicPath: '/scripts/'
+        publicPath: '/' + conf.scripts
     },
 
     plugins: [
@@ -19,7 +24,7 @@ module.exports = {
     ],
 
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ext
     },
 
     module: {

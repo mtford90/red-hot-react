@@ -1,51 +1,62 @@
 var gulp = require('gulp'),
     nodemon = require('nodemon'),
     jest = require('gulp-jest'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    taskListing = require('gulp-task-listing'),
+    _ = require('underscore'),
+    conf = require('./build.config');
 
+/**
+ * Construct glob for all js/specs in the project so can run tests everytime this changes.
+ */
+function constructJSGlob() {
+    var glob = _.map(conf.ext.js, function (x) { return './' + conf.scripts + '/**/*.' + x; });
+    _.each(conf.ext.spec, function (x) { glob.push('./' + conf.tests + '/**/*.' + x) });
+    glob = glob.concat('!' + './' + conf.tests + '/support/preprocessor.js');
+    return glob;
+}
 
-var JS_FILES = [
-    './scripts/**/*.js',
-    './scripts/**/*.jsx',
-    './__tests__/**/*.js',
-    './__tests__/**/*.jsx',
-    '!./__tests__/support/preprocessor.js'
-];
+var JS_FILES = constructJSGlob();
 
+/**
+ * Run Jest tests, ensuring that all jsx is transformed to js.
+ */
 function test() {
-    return gulp.src('__tests__').pipe(jest({
+    return gulp.src(conf.tests).pipe(jest({
         scriptPreprocessor: "./support/preprocessor.js",
         unmockedModulePathPatterns: [
             "node_modules/react"
         ],
-        testDirectoryName: "__tests__",
+        testDirectoryName: conf.tests,
         testPathIgnorePatterns: [
             "node_modules",
-            "__tests__/support"
+            conf.tests + "/support"
         ],
-        moduleFileExtensions: [
-            "js",
-            "json",
-            "react"
-        ]
+        moduleFileExtensions: conf.ext.spec
     }));
 }
+
+(function configureHelp() {
+    var HELP_EXCLUSIONS = ['default'];
+
+    function excludeFilter(task) {
+        return HELP_EXCLUSIONS.indexOf(task) > -1;
+    }
+
+    gulp.task('help', taskListing.withFilters(null, excludeFilter));
+})();
+
 
 gulp.task('test', function () {
     return test();
 });
 
-gulp.task('jsWatch', function () {
-    gulp.src(JS_FILES).pipe(watch(JS_FILES, function () {
-        console.log(1);
-        return test();
-    }));
-});
-
-gulp.task('nodeWatch', function () {
+gulp.task('watch', ['watch-js', 'watch-server']);
+gulp.task('watch-server', function () {
+    var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js');
     nodemon({
         script: 'server.js',
-        ignore: ['scripts/', 'styles/', 'gulpfile.js']
+        ignore: ignore
     })
         .on('restart', function () {
             console.log('restarting node server');
@@ -54,5 +65,11 @@ gulp.task('nodeWatch', function () {
             console.log('\nNode has crashed - will restart after next save.');
         })
 });
+gulp.task('watch-js', function () {
+    gulp.src(JS_FILES).pipe(watch(JS_FILES, function () {
+        return test();
+    }));
+});
 
-gulp.task('watch', ['nodeWatch', 'jsWatch']);
+
+gulp.task('default', ['help']);
