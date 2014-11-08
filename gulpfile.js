@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     taskListing = require('gulp-task-listing'),
     webpack = require('gulp-webpack'),
     _ = require('underscore'),
+    replace = require('gulp-replace'),
     open = require('gulp-open'),
     conf = require('./dev.config');
 
@@ -19,6 +20,7 @@ function constructJSGlob() {
 }
 
 var JS_FILES = constructJSGlob();
+var HTML_FILES = ['./index.html'];
 
 /**
  * Run Jest tests, ensuring that all jsx is transformed to js.
@@ -58,7 +60,7 @@ gulp.task('watch', ['watch-js', 'watch-server']);
 gulp.task('watch-server', function () {
     var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js', 'app.config.js', 'index.html');
     nodemon({
-        script: 'server.js',
+        script: 'devServer.js',
         ignore: ignore
     })
         .on('restart', function () {
@@ -73,25 +75,27 @@ gulp.task('watch-js', function () {
         return test();
     }));
 });
-
-function _build(uglify) {
-    var webpackConf = require('./webpack.config.js');
-    if (uglify) {
-        var UglifyJsPlugin = require('webpack').optimize.UglifyJsPlugin;
-        webpackConf.plugins.push(new UglifyJsPlugin());
-    }
-    webpackConf.output.filename = uglify ? conf.compiled : conf.built;
-    return gulp.src(conf.scripts + '/app.jsx')
-        .pipe(webpack(webpackConf))
-        .pipe(gulp.dest(conf.bin));
-}
-
-gulp.task('build', function () {
-    return _build(false);
+gulp.task('watch-html', function () {
+    gulp.src(HTML_FILES).pipe(watch(HTML_FILES));
 });
 
 gulp.task('compile', function () {
-    return _build(true);
+    var webpackConf = require('./webpack.config.js');
+    var UglifyJsPlugin = require('webpack').optimize.UglifyJsPlugin;
+    webpackConf.plugins.push(new UglifyJsPlugin());
+    webpackConf.output.filename = conf.compilation.name;
+    var dest = conf.compilation.dir;
+    var publicDest = dest + '/public/';
+    gulp.src(conf.scripts + '/app.jsx')
+        .pipe(webpack(webpackConf))
+        .pipe(gulp.dest(publicDest));
+    gulp.src(HTML_FILES)
+        .pipe(replace('scripts/bundle.js', conf.compilation.name))
+        .pipe(gulp.dest(publicDest));
+    gulp.src('./vendor/**/*')
+        .pipe(gulp.dest(publicDest + '/vendor'));
 });
 
 gulp.task('default', ['help']);
+
+module.exports = gulp;

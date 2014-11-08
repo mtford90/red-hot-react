@@ -4,7 +4,8 @@
   "description": "A ReactJS/Siesta app visualising Hacker News hiring threads",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,10 @@
     "file-loader": "^0.8.1",
     "gulp": "^3.8.10",
     "gulp-connect": "^2.2.0",
+    "gulp-copy": "0.0.2",
     "gulp-open": "^0.3.1",
     "gulp-react": "^2.0.0",
+    "gulp-replace": "^0.5.0",
     "gulp-task-listing": "^0.3.0",
     "gulp-uglify": "^1.0.1",
     "gulp-watch": "^1.1.0",
