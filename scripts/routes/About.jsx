@@ -4,7 +4,7 @@ var About = React.createClass({
     render: function () {
         return (
             <div className="container" role="main">
-                <span>About!</span>
+                <span>About...</span>
                 <this.props.activeRouteHandler/>
             </div>
         );
