@@ -1,10 +1,33 @@
 @import "../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
-
 body {
-  background: red;
   color: black;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+#wrapper {
+  margin-top: $navbar-height * 2;
+}
+
+nav {
+  .nav {
+    li {
+      // With react-router, the a elements are given class active, as opposed to the li
+      // elements, therefore we need to style the a elements instead.
+      a {
+        @mixin activeOrHover () {
+          background-color: rgb(0, 0, 0);
+          color: white;
+        }
+        &.active {
+          &:hover {
+            @include activeOrHover();
+          }
+          @include activeOrHover();
+        }
+      }
+    }
+  }
 }

@@ -55,7 +55,7 @@ gulp.task('test', function () {
 gulp.task('watch', ['watch-js', 'watch-server']);
 
 gulp.task('watch-server', function () {
-    var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js');
+    var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js', 'app.config.js', 'index.html');
     nodemon({
         script: 'server.js',
         ignore: ignore
