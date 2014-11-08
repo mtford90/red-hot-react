@@ -4,28 +4,17 @@ var React = require('react')
 
 var NavItem = React.createClass({
     render: function () {
-        var elem = (
+        return (
             <li>
                 <Link to={this.props.name}>{this.props.name}</Link>
             </li>
         );
-        console.log('elem', elem);
-        return elem;
     }
 });
 
 
 var Nav = React.createClass({
     render: function () {
-        //return (
-        //    <div>
-        //        <ul>
-        //        {this.props.items.map(function (k, i) {
-        //            return <NavItem name={k} key={i}/>
-        //        })}
-        //        </ul>
-        //    </div>
-        //)
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div className="container">
@@ -37,7 +26,7 @@ var Nav = React.createClass({
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="#"></a>
+                        <Link to="app" className="navbar-brand" role="button">{this.props.brand}</Link>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul className="nav navbar-nav">

@@ -1,14 +1,14 @@
 var React = require('react');
 
-var About = React.createClass({
+var Contact = React.createClass({
     render: function () {
         return (
             <div className="container" role="main">
-                <span>About!</span>
+                <span>Contact us!</span>
                 <this.props.activeRouteHandler/>
             </div>
         );
     }
 });
 
-module.exports = About;
+module.exports = Contact;

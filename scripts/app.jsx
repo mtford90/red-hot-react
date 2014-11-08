@@ -8,10 +8,10 @@ require('./styles');
 
 var App = React.createClass({
     render: function () {
-        var items = ['Home', 'About'];
+        var items = ['About', 'Contact'];
         return (
             <div>
-                <Nav items={items}/>
+                <Nav items={items} brand={conf.brand} brandRoute="Home"/>
                 <this.props.activeRouteHandler/>
             </div>
         )
@@ -24,13 +24,14 @@ var router = require('react-router')
     , DefaultRoute = router.DefaultRoute;
 
 var Home = require('./routes/Home'),
-    About = require('./routes/About');
+    About = require('./routes/About'),
+    Contact = require('./routes/Contact');
 
 var routes = (
     <Routes location="history">
         <Route name="app" path="/" handler={App}>
-            <Route name="Home" handler={Home}/>
             <Route name="About" handler={About}/>
+            <Route name="Contact" handler={Contact}/>
             <DefaultRoute handler={Home}/>
         </Route>
     </Routes>

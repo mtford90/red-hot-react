@@ -1,4 +1,6 @@
-var React = require('react');
+var React = require('react')
+    , router = require('react-router')
+    , Link = router.Link;
 
 var Jumbotron = React.createClass({
     render: function () {
@@ -7,7 +9,7 @@ var Jumbotron = React.createClass({
                 <h1>Hello, world!</h1>
                 <p>This is a boilerplate configuration for ReactJS providing hot reloads of components and styles.</p>
                 <p>
-                    <a href="#" className="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
+                    <Link to="About" className="btn btn-primary btn-lg" role="button">Learn more &raquo;</Link>
                 </p>
             </div>
         )
