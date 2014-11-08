@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     jest = require('gulp-jest'),
     watch = require('gulp-watch'),
     taskListing = require('gulp-task-listing'),
+    webpack = require('gulp-webpack'),
     _ = require('underscore'),
     open = require('gulp-open'),
     conf = require('./dev.config');
@@ -73,5 +74,24 @@ gulp.task('watch-js', function () {
     }));
 });
 
+function _build(uglify) {
+    var webpackConf = require('./webpack.config.js');
+    if (uglify) {
+        var UglifyJsPlugin = require('webpack').optimize.UglifyJsPlugin;
+        webpackConf.plugins.push(new UglifyJsPlugin());
+    }
+    webpackConf.output.filename = uglify ? conf.compiled : conf.built;
+    return gulp.src(conf.scripts + '/app.jsx')
+        .pipe(webpack(webpackConf))
+        .pipe(gulp.dest(conf.bin));
+}
+
+gulp.task('build', function () {
+    return _build(false);
+});
+
+gulp.task('compile', function () {
+    return _build(true);
+});
 
 gulp.task('default', ['help']);
