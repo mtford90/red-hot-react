@@ -1,1 +1,0 @@
-This folder contains JSX files for rendering specific routes.

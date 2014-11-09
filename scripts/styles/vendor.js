@@ -1,1 +1,0 @@
-require("../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss");
