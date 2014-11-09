@@ -17,11 +17,34 @@ var NavItem = React.createClass({
 });
 
 
+function toggleSidebar() {
+    var wrapper = $("#inner-wrapper");
+    wrapper.toggleClass("toggled");
+    if (typeof(Storage) !== 'undefined') {
+        var classes = wrapper[0].className.split(/\s+/);
+        if (classes.indexOf('toggled') > -1) {
+            localStorage.toggled = 'true';
+        }
+        else {
+            delete localStorage.toggled;
+        }
+    }
+}
+
+function isStorageEnabled() {
+    return typeof(Storage) !== 'undefined'
+}
+
+function isToggled() {
+    return isStorageEnabled() ? !!localStorage.toggled : false;
+}
+
+
+
 var Nav = React.createClass({
     onSidebarToggle: function (e) {
         e.preventDefault();
-        $("#sidebar-wrapper").toggleClass("toggled");
-        $("#page-content-wrapper").toggleClass("toggled");
+        toggleSidebar();
     },
     render: function () {
         return (
@@ -46,4 +69,7 @@ var Nav = React.createClass({
     }
 });
 
-module.exports = Nav;
+module.exports.Nav = Nav;
+module.exports.toggleSidebar = toggleSidebar;
+module.exports.isToggled = isToggled;
+module.exports.isStorageEnabled = isStorageEnabled;

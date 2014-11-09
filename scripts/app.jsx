@@ -1,6 +1,8 @@
+/*global dev*/
 var React = require('react'),
     conf = require('../app.config'),
-    Nav = require('./nav');
+    nav = require('./nav'),
+    Nav = nav.Nav;
 
 var App = React.createClass({
     render: function () {
@@ -10,7 +12,7 @@ var App = React.createClass({
             {text: 'Contact', icon: 'fa fa-envelope-o'}
         ];
         return (
-            <div>
+            <div id="inner-wrapper" className={nav.isStorageEnabled() ? (nav.isToggled ? 'toggled' : '') : ''}>
                 <Nav items={items}
                     brand={conf.brand}
                     brandRoute="Home"
@@ -33,16 +35,18 @@ var router = require('react-router')
     , NotFoundRoute = router.NotFoundRoute
     , DefaultRoute = router.DefaultRoute;
 
+
+var basePath = dev ? conf.basePath.dev : conf.basePath.prod;
 // Configure new routes here.
 var routes = (
     <Routes location="history">
-        <Route name="app" path="/" handler={App}>
+        <Route name="app" path={basePath} handler={App}>
             <Route name="Home" handler={require('./routes/Home')}/>
             <Route name="About" handler={require('./routes/About')}/>
             <Route name="Contact" handler={require('./routes/Contact')}/>
             <DefaultRoute handler={require('./routes/NotFound')}/>
             <NotFoundRoute handler={require('./routes/NotFound')}/>
-            <Redirect path="/" to="Home" />
+            <Redirect path={basePath} to="Home" />
         </Route>
     </Routes>
 );

@@ -8,127 +8,135 @@ $sidebar-movement: 210px;
   position: relative;
   height: 100%;
   width: 100%;
-  #sidebar-wrapper {
-    @include transitions();
-    height: 100%;
-    overflow: hidden;
-    background: #C63D0F;
-    position: absolute;
-    width: $sidebar-size;
-    top: 0;
-    left: 0;
-
+  #inner-wrapper {
     &.toggled {
-      width: $sidebar-size - $sidebar-movement;
-      .sidebar-nav {
-        margin-left: - $sidebar-movement;
+      #sidebar-wrapper {
+        width: $sidebar-size - $sidebar-movement;
+        .sidebar-nav {
+          margin-left: - $sidebar-movement;
+        }
+      }
+      #page-content-wrapper {
+        margin-left: $sidebar-size - $sidebar-movement;
+        @include transitions();
       }
     }
-    .sidebar-nav {
-      top: 0;
-      width: $sidebar-size;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+    #sidebar-wrapper {
       @include transitions();
-      li {
-        text-indent: 20px;
-        line-height: 40px;
+      height: 100%;
+      overflow: hidden;
+      background: #C63D0F;
+      position: absolute;
+      width: $sidebar-size;
+      top: 0;
+      left: 0;
 
-        a {
-          display: block;
-          text-decoration: none;
-          color: #e1ddde;
-
-          i {
-            float: right;
-            padding-top: 14px;
-            padding-right: 13px;
-          }
-
-          &.active {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-          }
-
-          &:hover {
-            text-decoration: none;
-            color: #fff;
-            background: rgba(255, 255, 255, 0.2);
-          }
-
-          &:active {
-            text-decoration: none;
-          }
-
-          &:focus {
-            text-decoration: none;
-          }
-        }
-
-        &.sidebar-brand {
-          height: 65px;
-          font-size: 18px;
-          line-height: 60px;
-          position: relative;
-          right: 22px;
-
-          .toggle-button {
-            position: absolute;
-            right: 0;
-            top: 12px;
-            border-radius: 0;
-            background-color: transparent;
-            color: white;
-            outline: none;
-          }
-
-          i {
-            float: none;
-            &.brand-icon {
-              position: relative;
-              left: 5px;
-            }
-            &.toggle {
-              position: relative;
-              float: right;
-              left: 23px;
-            }
-          }
+      .sidebar-nav {
+        top: 0;
+        width: $sidebar-size;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        @include transitions();
+        li {
+          text-indent: 20px;
+          line-height: 40px;
 
           a {
-            color: #999999;
+            display: block;
+            text-decoration: none;
+            color: #e1ddde;
+
+            i {
+              float: right;
+              padding-top: 14px;
+              padding-right: 13px;
+            }
 
             &.active {
               text-decoration: none;
-              // Override
-              color: white;
-              background: inherit;
+              color: #fff;
+              background: rgba(255, 255, 255, 0.2);
             }
 
             &:hover {
+              text-decoration: none;
               color: #fff;
-              background: none;
+              background: rgba(255, 255, 255, 0.2);
+            }
+
+            &:active {
+              text-decoration: none;
+            }
+
+            &:focus {
+              text-decoration: none;
             }
           }
 
+          &.sidebar-brand {
+            height: 65px;
+            font-size: 18px;
+            line-height: 60px;
+            position: relative;
+            right: 22px;
+
+            .toggle-button {
+              position: absolute;
+              right: 0;
+              top: 12px;
+              border-radius: 0;
+              background-color: transparent;
+              color: white;
+              outline: none;
+            }
+
+            i {
+              float: none;
+              &.brand-icon {
+                position: relative;
+                left: 5px;
+              }
+              &.toggle {
+                position: relative;
+                float: right;
+                left: 23px;
+              }
+            }
+
+            a {
+              color: #999999;
+
+              &.active {
+                text-decoration: none;
+                // Override
+                color: white;
+                background: inherit;
+              }
+
+              &:hover {
+                color: #fff;
+                background: none;
+              }
+            }
+
+          }
         }
       }
     }
-  }
 
-  #page-content-wrapper {
-    .container-fluid {
-      padding: 0;
-      margin: 0;
-    }
-    padding: 30px;
-    @include transitions();
-    margin-left: $sidebar-size;
-    &.toggled {
-      margin-left: $sidebar-size - $sidebar-movement;
+    #page-content-wrapper {
+      .container-fluid {
+        padding: 0;
+        margin: 0;
+      }
+      padding: 30px;
       @include transitions();
+      margin-left: $sidebar-size;
     }
   }
 }
