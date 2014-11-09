@@ -28,9 +28,12 @@ var Nav = React.createClass({
             <div id="sidebar-wrapper">
                 <ul className="sidebar-nav">
                     <li className="sidebar-brand">
-                        <Link to="app"  role="button">{this.props.brand}</Link>
+                        <Link to="app"  role="button">
+                            {this.props.brandIcon ? <i className={this.props.brandIcon + ' ' + 'brand-icon'}></i> : ''}
+                            {this.props.brand}
+                        </Link>
                         <button className="btn toggle-button" onClick={this.onSidebarToggle}>
-                            <i className="fa fa-exchange"></i>
+                            <i className="fa fa-exchange toggle"></i>
                         </button>
                     </li>
                     {this.props.items.map(function (k, i) {

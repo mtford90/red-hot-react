@@ -11,7 +11,10 @@ var App = React.createClass({
         ];
         return (
             <div>
-                <Nav items={items} brand={conf.brand} brandRoute="Home"/>
+                <Nav items={items}
+                    brand={conf.brand}
+                    brandRoute="Home"
+                    brandIcon={conf.brandIcon}/>
                 <div id="page-content-wrapper">
                     <div className="container-fluid" role="main">
                     {/*This is where routes are injected.*/}

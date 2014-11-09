@@ -1,3 +1,4 @@
 module.exports = {
-    brand: 'ReactJS Boilerplate'
+    brand: 'Red Hot React',
+    brandIcon: 'fa fa-fire'
 };
