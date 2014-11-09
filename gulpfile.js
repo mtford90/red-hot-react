@@ -56,7 +56,7 @@ gulp.task('test', function () {
     return test();
 });
 
-gulp.task('watch', ['watch-js', 'watch-server']);
+gulp.task('watch', ['watch-js', 'watch-server', 'watch-html']);
 
 gulp.task('watch-server', function () {
     var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js', 'app.config.js', 'index.html');
@@ -77,13 +77,15 @@ gulp.task('watch-js', function () {
     }));
 });
 gulp.task('watch-html', function () {
-    gulp.src(HTML_FILES).pipe(watch(HTML_FILES));
+
 });
 
 gulp.task('compile', function () {
     var webpackConf = require('./webpack.config.js');
     var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
     webpackConf.plugins.push(new UglifyJsPlugin());
+    // Ensure that dev-only styles are not applied in the compiled application
+    // (e.g. css transitions applied to all elements)
     webpackConf.plugins.push(new webpack.DefinePlugin({
         dev: 'false'
     }));

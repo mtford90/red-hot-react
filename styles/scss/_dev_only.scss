@@ -1,6 +1,5 @@
-/*
-These styles
-*/
-body {
-  background-color: red;
+@import "_transitions.scss";
+
+* {
+  @include transitions();
 }

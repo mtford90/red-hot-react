@@ -22,6 +22,7 @@
     "body-parser": "^1.9.2",
     "css-loader": "^0.9.0",
     "express": "^4.10.1",
+    "express-livereload": "0.0.24",
     "file-loader": "^0.8.1",
     "gulp": "^3.8.10",
     "gulp-connect": "^2.2.0",
