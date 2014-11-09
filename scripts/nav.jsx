@@ -7,7 +7,10 @@ var NavItem = React.createClass({
     render: function () {
         return (
             <li>
-                <Link to={this.props.name}>{this.props.name}</Link>
+                <Link to={this.props.item.text}>
+                    <span>{this.props.item.text}</span>
+                    {this.props.item.icon ? <i className={this.props.item.icon}/> : ''}
+                </Link>
             </li>
         );
     }
@@ -31,7 +34,7 @@ var Nav = React.createClass({
                         </button>
                     </li>
                     {this.props.items.map(function (k, i) {
-                        return <NavItem name={k} key={i}/>
+                        return <NavItem item={k} key={i}/>
                     })}
                 </ul>
             </div>

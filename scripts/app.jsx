@@ -4,7 +4,11 @@ var React = require('react'),
 
 var App = React.createClass({
     render: function () {
-        var items = ['Home', 'About', 'Contact'];
+        var items = [
+            {text: 'Home', icon: 'fa fa-home'},
+            {text:'About', icon: 'fa fa-question-circle'},
+            {text: 'Contact', icon: 'fa fa-envelope-o'}
+        ];
         return (
             <div>
                 <Nav items={items} brand={conf.brand} brandRoute="Home"/>

@@ -40,6 +40,13 @@ $sidebar-movement: 210px;
           text-decoration: none;
           color: #999999;
 
+          i {
+            float: right;
+            padding-top: 14px;
+            padding-right: 14px;
+          }
+
+
           &.active {
             text-decoration: none;
             color: #fff;
@@ -76,6 +83,7 @@ $sidebar-movement: 210px;
             color: white;
             outline: none;
           }
+
 
           a {
             color: #999999;
