@@ -34,5 +34,8 @@ module.exports = {
         name: 'bundle.min.js',
         // Where to place compiled bundles.
         dir: 'bin'
-    }
+    },
+    // Add transitions to everything to make live editing look nice and smooth (has performance implications)
+    // NOTE: This will only be performed in dev. Compilation step excludes this.
+    devStyles: false
 };

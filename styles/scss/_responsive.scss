@@ -1,0 +1,22 @@
+/*
+A helper for implementing responsive design with bootstrap.
+Credit to @hiroagustin
+*/
+@import "../../vendor/bootstrap-sass-official/assets/stylesheets/bootstrap/_variables.scss";
+
+$breakpoints: (
+        "(min-width: #{$screen-xs-min})" "xsmall",
+        "(min-width: #{$screen-sm-min})" "small",
+        "(min-width: #{$screen-md-min})" "medium",
+        "(min-width: #{$screen-lg-min})" "large"
+);
+
+@mixin breakpoint($point) {
+  @each $breakpoint in $breakpoints {
+    $query: nth($breakpoint, 1);
+    $name: nth($breakpoint, 2);
+    @if ($name == $point) {
+      @media #{$query} { @content }
+    }
+  }
+}

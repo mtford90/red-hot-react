@@ -56,8 +56,8 @@ gulp.task('test', function () {
     return test();
 });
 
-gulp.task('watch', ['watch-js', 'watch-server', 'watch-html']);
-
+gulp.task('watch', ['watch-js', 'watch-server']);
+// If any dev server related configuration changes, we need to relaunch as opposed to hot reloading.
 gulp.task('watch-server', function () {
     var ignore = _.map(_.keys(conf.styles), function (x) {return conf.styles[x]}).concat('gulpfile.js', 'app.config.js', 'index.html');
     nodemon({
@@ -71,17 +71,16 @@ gulp.task('watch-server', function () {
             console.log('\nNode has crashed - will restart after next save.');
         });
 });
+// When JSX/JS files change, we want to run the Jest tests.
 gulp.task('watch-js', function () {
     gulp.src(JS_FILES).pipe(watch(JS_FILES, function () {
         return test();
     }));
 });
-gulp.task('watch-html', function () {
-
-});
 
 gulp.task('compile', function () {
     var webpackConf = require('./webpack.config.js');
+    // The webpack uglify plugin will uglify both the JS and the embedded styles.
     var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
     webpackConf.plugins.push(new UglifyJsPlugin());
     // Ensure that dev-only styles are not applied in the compiled application
@@ -92,14 +91,14 @@ gulp.task('compile', function () {
     webpackConf.output.filename = conf.compilation.name;
     var dest = conf.compilation.dir;
     var publicDest = dest + '/public/';
+    // Pack the JSX & transform into JS.
     gulp.src(conf.scripts + '/app.jsx')
         .pipe(gulpWebpack(webpackConf))
         .pipe(gulp.dest(publicDest));
+    // Rename bundle.js to configured name.
     gulp.src(HTML_FILES)
         .pipe(replace('scripts/bundle.js', conf.compilation.name))
         .pipe(gulp.dest(publicDest));
-    gulp.src('./vendor/**/*')
-        .pipe(gulp.dest(publicDest + '/vendor'));
 });
 
 gulp.task('default', ['help']);

@@ -1,0 +1,114 @@
+$sidebar-size: 250px;
+$sidebar-movement: 210px;
+
+@import "_transitions";
+@import "_responsive";
+
+#wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  #sidebar-wrapper {
+    @include transitions();
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    position: absolute;
+    width: $sidebar-size;
+    top: 0;
+    left: 0;
+
+    &.toggled {
+      width: $sidebar-size - $sidebar-movement;
+      .sidebar-nav {
+          margin-left:  - $sidebar-movement;
+      }
+    }
+    .sidebar-nav {
+      top: 0;
+      width: $sidebar-size;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      @include transitions();
+      li {
+        text-indent: 20px;
+        line-height: 40px;
+
+        a {
+          display: block;
+          text-decoration: none;
+          color: #999999;
+
+          &.active {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          &:hover {
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+          }
+
+          &:active {
+            text-decoration: none;
+          }
+
+          &:focus {
+            text-decoration: none;
+          }
+        }
+
+        &.sidebar-brand {
+          height: 65px;
+          font-size: 18px;
+          line-height: 60px;
+          position: relative;
+
+          .toggle-button {
+            position: absolute;
+            right: 0;
+            top: 12px;
+            border-radius: 0;
+            background-color: transparent;
+            color: white;
+            outline: none;
+          }
+
+          a {
+            color: #999999;
+
+            &.active {
+              text-decoration: none;
+              // Override
+              color: white;
+              background: inherit;
+            }
+
+            &:hover {
+              color: #fff;
+              background: none;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  #page-content-wrapper {
+    .container-fluid {
+      padding: 0;
+      margin: 0;
+    }
+    padding: 30px;
+    @include transitions();
+    margin-left: $sidebar-size;
+    &.toggled {
+      margin-left: $sidebar-size - $sidebar-movement;
+      @include transitions();
+    }
+  }
+}

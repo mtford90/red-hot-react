@@ -1,4 +1,5 @@
 var React = require('react')
+    , $ = require('jquery')
     , router = require('react-router')
     , Link = router.Link;
 
@@ -16,22 +17,23 @@ var NavItem = React.createClass({
 var Nav = React.createClass({
     onSidebarToggle: function (e) {
         e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
+        $("#sidebar-wrapper").toggleClass("toggled");
+        $("#page-content-wrapper").toggleClass("toggled");
     },
     render: function () {
         return (
-            <div>
-                <div id="sidebar-wrapper">
-                    <ul className="sidebar-nav">
-                        <li className="sidebar-brand">
-                            <Link to="app"  role="button">{this.props.brand}</Link>
-                            <button className="btn toggle-button" onClick={this.onSidebarToggle}><i className="fa fa-exchange"></i></button>
-                        </li>
+            <div id="sidebar-wrapper">
+                <ul className="sidebar-nav">
+                    <li className="sidebar-brand">
+                        <Link to="app"  role="button">{this.props.brand}</Link>
+                        <button className="btn toggle-button" onClick={this.onSidebarToggle}>
+                            <i className="fa fa-exchange"></i>
+                        </button>
+                    </li>
                     {this.props.items.map(function (k, i) {
                         return <NavItem name={k} key={i}/>
                     })}
-                    </ul>
-                </div>
+                </ul>
             </div>
         )
 

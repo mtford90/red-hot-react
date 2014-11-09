@@ -15,8 +15,8 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "bootstrap-sass": "~3.0.2"
-  },
-  "directory": "app/vendor"
+  "directory": "app/vendor",
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.0"
+  }
 }

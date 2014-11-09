@@ -1,0 +1,9 @@
+@import "../_responsive";
+
+#home {
+  .jumbotron {
+    @include breakpoint('small') {
+      padding: 30px 15px !important;
+    }
+  }
+}

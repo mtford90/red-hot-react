@@ -4,7 +4,7 @@ var React = require('react'),
 
 var App = React.createClass({
     render: function () {
-        var items = ['About', 'Contact'];
+        var items = ['Home', 'About', 'Contact'];
         return (
             <div>
                 <Nav items={items} brand={conf.brand} brandRoute="Home"/>
@@ -22,14 +22,20 @@ var App = React.createClass({
 var router = require('react-router')
     , Route = router.Route
     , Routes = router.Routes
+    , Redirect = router.Redirect
+    , NotFoundRoute = router.NotFoundRoute
     , DefaultRoute = router.DefaultRoute;
 
+// Configure new routes here.
 var routes = (
     <Routes location="history">
         <Route name="app" path="/" handler={App}>
+            <Route name="Home" handler={require('./routes/Home')}/>
             <Route name="About" handler={require('./routes/About')}/>
             <Route name="Contact" handler={require('./routes/Contact')}/>
-            <DefaultRoute handler={require('./routes/Home')}/>
+            <DefaultRoute handler={require('./routes/NotFound')}/>
+            <NotFoundRoute handler={require('./routes/NotFound')}/>
+            <Redirect path="/" to="Home" />
         </Route>
     </Routes>
 );
