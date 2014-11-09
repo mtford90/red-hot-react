@@ -68,7 +68,7 @@ var Home = React.createClass({
                         <div className="jumbotron">
                             <h1>Red Hot React</h1>
                             <p>
-                            This is a gloriously opinionated boilerplate for ReactJS with a focus on rapid development
+                            This is a gloriously opinionated boilerplate for ReactJS with a focus on developer workflow for rapid development
                             and delivery.
                             </p>
                             <p>

@@ -2,6 +2,7 @@
 
 #home {
   .jumbotron {
+    background-color: #f0e6da;
     @include breakpoint('small') {
       padding: 30px 15px !important;
     }

@@ -12,7 +12,7 @@ $sidebar-movement: 210px;
     @include transitions();
     height: 100%;
     overflow: hidden;
-    background: #000;
+    background: #C63D0F;
     position: absolute;
     width: $sidebar-size;
     top: 0;
@@ -38,9 +38,7 @@ $sidebar-movement: 210px;
         a {
           display: block;
           text-decoration: none;
-          color: #999999;
-
-
+          color: #becfbc;
 
           i {
             float: right;

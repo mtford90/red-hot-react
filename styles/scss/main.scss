@@ -15,6 +15,15 @@ body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  background-color: #FDF3E7;
+}
+
+.btn-primary {
+  background-color: #7E8F7C;
+  border-width: 0;
+  &:hover {
+    background-color: #a4b5a2;
+  }
 }
 
 @import "routes/_home";
