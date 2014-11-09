@@ -32,6 +32,9 @@ Below is a summary of the individual gulp tasks and their function:
     * compiles to `bin/app.js`
 * `build`
 
+# Production
+
+Optionally, The production app can be served with `npm start` however you must ensure that `gulp compile` has been run.
 
 # Configuration
 

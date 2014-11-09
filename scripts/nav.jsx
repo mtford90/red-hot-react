@@ -14,29 +14,25 @@ var NavItem = React.createClass({
 
 
 var Nav = React.createClass({
+    onSidebarToggle: function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    },
     render: function () {
         return (
-            <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div className="container">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                            aria-expanded="false" aria-controls="navbar">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                        <Link to="app" className="navbar-brand" role="button">{this.props.brand}</Link>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul className="nav navbar-nav">
-                                {this.props.items.map(function (k, i) {
-                                    return <NavItem name={k} key={i}/>
-                                })}
-                        </ul>
-                    </div>
+            <div>
+                <div id="sidebar-wrapper">
+                    <ul className="sidebar-nav">
+                        <li className="sidebar-brand">
+                            <Link to="app"  role="button">{this.props.brand}</Link>
+                            <button className="btn toggle-button" onClick={this.onSidebarToggle}><i className="fa fa-exchange"></i></button>
+                        </li>
+                    {this.props.items.map(function (k, i) {
+                        return <NavItem name={k} key={i}/>
+                    })}
+                    </ul>
                 </div>
-            </nav>
+            </div>
         )
 
     }

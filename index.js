@@ -1,15 +1,10 @@
-var gulp = require('./gulpfile')
-    , express = require('express')
+var express = require('express')
     , app = express()
     , conf = require('./dev.config')
-    , open = require("open")
-    , http = require('http').Server(app);
-
-// Ensure that app has been built
-gulp.run('compile');
+    , open = require("open");
 
 app.use(express.static(conf.compilation.dir + '/public'));
 app.get('/', function (req, res) {
     res.sendFile(conf.compilation.dir + '/public/index.html');
 });
-http.listen(3000);
+app.listen(3000);

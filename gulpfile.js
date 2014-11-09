@@ -3,10 +3,11 @@ var gulp = require('gulp'),
     jest = require('gulp-jest'),
     watch = require('gulp-watch'),
     taskListing = require('gulp-task-listing'),
-    webpack = require('gulp-webpack'),
+    gulpWebpack = require('gulp-webpack'),
     _ = require('underscore'),
     replace = require('gulp-replace'),
     open = require('gulp-open'),
+    webpack = require('webpack'),
     conf = require('./dev.config');
 
 /**
@@ -81,13 +82,16 @@ gulp.task('watch-html', function () {
 
 gulp.task('compile', function () {
     var webpackConf = require('./webpack.config.js');
-    var UglifyJsPlugin = require('webpack').optimize.UglifyJsPlugin;
+    var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
     webpackConf.plugins.push(new UglifyJsPlugin());
+    webpackConf.plugins.push(new webpack.DefinePlugin({
+        dev: 'false'
+    }));
     webpackConf.output.filename = conf.compilation.name;
     var dest = conf.compilation.dir;
     var publicDest = dest + '/public/';
     gulp.src(conf.scripts + '/app.jsx')
-        .pipe(webpack(webpackConf))
+        .pipe(gulpWebpack(webpackConf))
         .pipe(gulp.dest(publicDest));
     gulp.src(HTML_FILES)
         .pipe(replace('scripts/bundle.js', conf.compilation.name))

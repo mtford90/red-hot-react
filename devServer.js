@@ -17,6 +17,10 @@ app.all('/*', function (req, res, next) {
 });
 
 app.listen(conf.webPack.port);
+
+config.plugins.push(new webpack.DefinePlugin({
+    dev: 'true'
+}));
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,

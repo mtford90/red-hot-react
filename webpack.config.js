@@ -42,12 +42,8 @@ module.exports = {
                 loader: "style!css!sass?outputStyle=expanded"
             },
             {
-                test: /\.sass$/,
-                loader: "style!css!sass?outputStyle=expanded"
-            },
-            {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                loader: "style-loader!css-loader!autoprefixer-loader"
             },
             {
                 test: /\.less$/,

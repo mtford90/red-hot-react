@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mtford90/hn-hiring",
   "devDependencies": {
+    "autoprefixer-loader": "^1.0.0",
     "body-parser": "^1.9.2",
     "css-loader": "^0.9.0",
     "express": "^4.10.1",
@@ -25,6 +26,7 @@
     "gulp": "^3.8.10",
     "gulp-connect": "^2.2.0",
     "gulp-copy": "0.0.2",
+    "gulp-inject": "^1.0.2",
     "gulp-open": "^0.3.1",
     "gulp-react": "^2.0.0",
     "gulp-replace": "^0.5.0",
