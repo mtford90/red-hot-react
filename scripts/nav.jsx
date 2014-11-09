@@ -26,7 +26,7 @@ function toggleSidebar() {
             localStorage.toggled = 'true';
         }
         else {
-            delete localStorage.toggled;
+            localStorage.toggled = 'false';
         }
     }
 }
@@ -36,10 +36,8 @@ function isStorageEnabled() {
 }
 
 function isToggled() {
-    return isStorageEnabled() ? !!localStorage.toggled : false;
+    return isStorageEnabled() ? localStorage.toggled : null;
 }
-
-
 
 var Nav = React.createClass({
     onSidebarToggle: function (e) {

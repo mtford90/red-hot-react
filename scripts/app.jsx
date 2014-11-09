@@ -11,8 +11,9 @@ var App = React.createClass({
             {text: 'About', icon: 'fa fa-question-circle'},
             {text: 'Contact', icon: 'fa fa-envelope-o'}
         ];
+        var isToggled = nav.isToggled();
         return (
-            <div id="inner-wrapper" className={nav.isStorageEnabled() ? (nav.isToggled ? 'toggled' : '') : ''}>
+            <div id="inner-wrapper" className={isToggled == 'false' ? '' : 'toggled'}>
                 <Nav items={items}
                     brand={conf.brand}
                     brandRoute="Home"
