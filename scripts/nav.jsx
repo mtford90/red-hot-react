@@ -9,7 +9,7 @@ var NavItem = React.createClass({
             <li>
                 <Link to={this.props.item.text}>
                     <span>{this.props.item.text}</span>
-                    {this.props.item.icon ? <i className={this.props.item.icon}/> : ''}
+                        {this.props.item.icon ? <i className={this.props.item.icon}/> : ''}
                 </Link>
             </li>
         );

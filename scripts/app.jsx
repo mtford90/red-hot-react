@@ -44,6 +44,4 @@ var routes = (
     </Routes>
 );
 
-require('./styles'); // Render styles;
-
-React.render(routes, document.getElementById('wrapper'));
+module.exports = routes;

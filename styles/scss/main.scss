@@ -1,4 +1,7 @@
-@import "../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// Moving bootstrap to styles.js speeds up considerably.
+// In our scss, we can then just import individual bootstrap components
+// when necessary.
+//@import "../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "_sidebar.scss";
 
 html, body {
@@ -9,11 +12,9 @@ html, body {
 }
 
 body {
-  color: black;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
 }
-
 
 @import "routes/_home";

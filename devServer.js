@@ -1,5 +1,4 @@
 var express = require('express')
-    , bodyParser = require('body-parser')
     , app = express()
     , webpack = require('webpack')
     , WebpackDevServer = require('webpack-dev-server')
@@ -7,19 +6,10 @@ var express = require('express')
     , conf = require('./dev.config')
     , open = require("open");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-app.all('/*', function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:' + conf.port.toString());
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    next();
-});
-
-app.listen(conf.webPack.port);
-
 config.plugins.push(new webpack.DefinePlugin({
     dev: 'true'
 }));
+
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,

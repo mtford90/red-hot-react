@@ -92,7 +92,7 @@ gulp.task('compile', function () {
     var dest = conf.compilation.dir;
     var publicDest = dest + '/public/';
     // Pack the JSX & transform into JS.
-    gulp.src(conf.scripts + '/app.jsx')
+    gulp.src(conf.scripts + '/index.jsx')
         .pipe(gulpWebpack(webpackConf))
         .pipe(gulp.dest(publicDest));
     // Rename bundle.js to configured name.

@@ -2,7 +2,7 @@ module.exports = {
     // Location of js/jsx
     scripts: 'scripts',
     // Main script
-    entry: './scripts/app',
+    entry: './scripts/index',
     // Location of stylesheets
     styles: {
         scss: 'styles/scss',
@@ -37,5 +37,5 @@ module.exports = {
     },
     // Add transitions to everything to make live editing look nice and smooth (has performance implications)
     // NOTE: This will only be performed in dev. Compilation step excludes this.
-    devStyles: false
+    devStyles: true
 };
