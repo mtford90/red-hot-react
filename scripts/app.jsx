@@ -6,7 +6,7 @@ var App = React.createClass({
     render: function () {
         var items = [
             {text: 'Home', icon: 'fa fa-home'},
-            {text:'About', icon: 'fa fa-question-circle'},
+            {text: 'About', icon: 'fa fa-question-circle'},
             {text: 'Contact', icon: 'fa fa-envelope-o'}
         ];
         return (

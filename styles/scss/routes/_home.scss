@@ -6,4 +6,37 @@
       padding: 30px 15px !important;
     }
   }
+  .feature-row {
+    .feature-col {
+      padding-right: 20px;
+      padding-left: 20px;
+
+      .feature {
+        .title-row {
+          .title {
+            font-weight: bolder;
+            margin-left: 8px;
+            position: relative;
+            bottom: 1px;
+          }
+          i {
+            font-size: 18px;
+          }
+          margin-bottom: 8px;
+        }
+
+        .description {
+          padding-left: 2px;
+          padding-right: 2px;
+        }
+
+      }
+    }
+    padding-left: 18px;
+    padding-right: 18px;
+    @include breakpoint('medium') {
+      margin-bottom: 16px;
+    }
+
+  }
 }

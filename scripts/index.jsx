@@ -4,7 +4,8 @@
 var React = require('react')
 , app = require('./app');
 
-require('./styles/vendor'); // Render styles;
-require('./styles/custom'); // Render styles;
+require('./styles/vendor');
+require('./styles/custom');
+require('./styles/dev');
 
 React.render(app, document.getElementById('wrapper'));
