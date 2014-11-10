@@ -1,6 +1,10 @@
 var React = require('react')
     , router = require('react-router')
-    , Link = router.Link;
+    , Link = router.Link
+    , bootstrap = require('react-bootstrap')
+    , Row = bootstrap.Row
+    , Col = bootstrap.Col
+    , Jumbotron = bootstrap.Jumbotron;
 
 
 var Feature = React.createClass({
@@ -63,19 +67,19 @@ var Home = React.createClass({
         }
         return (
             <div id="home">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="jumbotron">
+                <Row>
+                    <Col md="12">
+                        <Jumbotron>
                             <h1>Red Hot React</h1>
                             <p>
-                            A rather opinionated boilerplate for ReactJS, focusing on developer workflow in aid of rapid development and delivery.
+                                A rather opinionated boilerplate for ReactJS, focusing on developer workflow in aid of rapid development and delivery.
                             </p>
                             <p>
                                 <Link to="About" className="btn btn-primary btn-lg" role="button">Learn more &raquo;</Link>
                             </p>
-                        </div>
-                    </div>
-                </div>
+                        </Jumbotron>
+                    </Col>
+                </Row>
                     {chunkedFeatures.map(function (featureRow, i) {
                         return (
                             <div className="row feature-row">

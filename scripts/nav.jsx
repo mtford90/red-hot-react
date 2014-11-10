@@ -1,73 +1,21 @@
-var React = require('react')
-    , $ = require('jquery')
-    , router = require('react-router')
-    , Link = router.Link;
+/**
+ * This is where navigation & routing is configured.
+ */
 
-var NavItem = React.createClass({
-    render: function () {
-        return (
-            <li>
-                <Link to={this.props.item.text}>
-                    <span>{this.props.item.text}</span>
-                        {this.props.item.icon ? <i className={this.props.item.icon}/> : ''}
-                </Link>
-            </li>
-        );
-    }
-});
+var React = require('react');
 
+var Home = require('./routes/Home')
+    , About = require('./routes/About')
+    , Contact = require('./routes/Contact')
+    , NotFound = require('./routes/NotFound');
 
-function toggleSidebar() {
-    var wrapper = $("#inner-wrapper");
-    wrapper.toggleClass("toggled");
-    if (typeof(Storage) !== 'undefined') {
-        var classes = wrapper[0].className.split(/\s+/);
-        if (classes.indexOf('toggled') > -1) {
-            localStorage.toggled = 'true';
-        }
-        else {
-            localStorage.toggled = 'false';
-        }
-    }
-}
+var defaultRoute = {text: 'Home', icon: 'fa fa-home', handler: Home};
+var navigationItems = [
+    defaultRoute,
+    {text: 'About', icon: 'fa fa-question-circle', handler: About},
+    {text: 'Contact', icon: 'fa fa-envelope-o', handler: Contact}
+];
 
-function isStorageEnabled() {
-    return typeof(Storage) !== 'undefined'
-}
-
-function isToggled() {
-    return isStorageEnabled() ? localStorage.toggled : null;
-}
-
-var Nav = React.createClass({
-    onSidebarToggle: function (e) {
-        e.preventDefault();
-        toggleSidebar();
-    },
-    render: function () {
-        return (
-            <div id="sidebar-wrapper">
-                <ul className="sidebar-nav">
-                    <li className="sidebar-brand">
-                        <Link to="app"  role="button">
-                            {this.props.brandIcon ? <i className={this.props.brandIcon + ' ' + 'brand-icon'}></i> : ''}
-                            {this.props.brand}
-                        </Link>
-                        <button className="btn toggle-button" onClick={this.onSidebarToggle}>
-                            <i className="fa fa-exchange toggle"></i>
-                        </button>
-                    </li>
-                    {this.props.items.map(function (k, i) {
-                        return <NavItem item={k} key={i}/>
-                    })}
-                </ul>
-            </div>
-        )
-
-    }
-});
-
-module.exports.Nav = Nav;
-module.exports.toggleSidebar = toggleSidebar;
-module.exports.isToggled = isToggled;
-module.exports.isStorageEnabled = isStorageEnabled;
+module.exports.defaultRoute = defaultRoute;
+module.exports.navigationItems = navigationItems;
+module.exports.NotFound = NotFound;
