@@ -40,7 +40,7 @@ var Contact = React.createClass({
                     <div className="col-md-12">
                         <p>
                         Or visit my
-                            <a href="http://www.mtford.co.uk">blog</a>
+                            <a href="http://www.mtford.co.uk"> blog</a>
                         </p>
                     </div>
                 </div>

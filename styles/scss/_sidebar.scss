@@ -5,10 +5,11 @@ $sidebar-movement: 210px;
 @import "_responsive";
 
 #wrapper {
-  position: relative;
   height: 100%;
   width: 100%;
+  overflow: auto;
   #inner-wrapper {
+    overflow: auto;
     &.toggled {
       #sidebar-wrapper {
         width: $sidebar-size - $sidebar-movement;
@@ -22,7 +23,6 @@ $sidebar-movement: 210px;
       }
     }
 
-    position: relative;
     height: 100%;
     width: 100%;
     #sidebar-wrapper {
