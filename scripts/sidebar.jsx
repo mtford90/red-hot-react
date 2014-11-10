@@ -18,7 +18,7 @@ var NavItem = React.createClass({
 
 
 function toggleSidebar() {
-    var wrapper = $("#inner-wrapper");
+    var wrapper = $("#toggle-wrapper");
     wrapper.toggleClass("toggled");
     if (typeof(Storage) !== 'undefined') {
         var classes = wrapper[0].className.split(/\s+/);

@@ -4,7 +4,7 @@
 
 var React = require('react');
 
-var Home = require('./routes/Home')
+var Home = require('./routes/home/Home')
     , About = require('./routes/About')
     , Contact = require('./routes/Contact')
     , NotFound = require('./routes/NotFound');
