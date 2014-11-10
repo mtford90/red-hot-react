@@ -66,7 +66,9 @@ var Home = React.createClass({
                 <Row>
                     <Col md="12">
                         <Jumbotron>
-                            <h1>Red Hot React</h1>
+                            <h1>
+                                <i className="fa fa-fire"></i>
+                            Red Hot React</h1>
                             <p>
                             A rather opinionated boilerplate for ReactJS, focusing on developer workflow in aid of rapid development and delivery.
                             </p>
