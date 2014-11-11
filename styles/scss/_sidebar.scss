@@ -87,7 +87,7 @@ $sidebar-movement: 210px;
 
             .toggle-button {
               position: absolute;
-              right: 0;
+              right: -22px;
               top: 12px;
               border-radius: 0;
               background-color: transparent;
@@ -104,7 +104,6 @@ $sidebar-movement: 210px;
               &.toggle {
                 position: relative;
                 float: right;
-                left: 23px;
               }
             }
 
