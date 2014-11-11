@@ -19,6 +19,7 @@ var React = require('react'),
 /** Pack dem styles **/
 /*********************/
 
+
 // The toggle wrapper features the 'toggle' class which passes down styles to the sidebar and content wrapper
 // depending on whether or not toggle has been pressed.
 var ToggleWrapper = React.createClass({
@@ -86,7 +87,7 @@ var router = require('react-router')
 var basePath = dev ? conf.basePath.dev : conf.basePath.prod;
 
 var RouterComponent = (
-    <Routes location="history">
+    <Routes>
         <Route name="app" path={basePath} handler={App}>
             {routes.navigationItems.map(function (item, idx) {
                 return (<Route name={item.text} handler={item.handler} key={idx}/>);

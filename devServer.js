@@ -1,6 +1,4 @@
-var express = require('express')
-    , app = express()
-    , webpack = require('webpack')
+var webpack = require('webpack')
     , WebpackDevServer = require('webpack-dev-server')
     , config = require('./webpack.config')
     , conf = require('./dev.config')

@@ -3,7 +3,6 @@ var React = require('react'),
     Row = bootstrap.Row,
     Col = bootstrap.Col;
 
-
 var About = React.createClass({
     render: function () {
         return (
