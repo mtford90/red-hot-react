@@ -11,6 +11,16 @@ html, body {
   width: 100%;
 }
 
+a {
+  outline: none !important;
+  &:active {
+    outline: none !important;
+  }
+  &:hover {
+    outline: none !important;
+  }
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,8 +32,12 @@ body {
   background-color: #832020;
   border-width: 0;
   &:hover {
-    background-color:#A63F3F;
+    background-color: #A63F3F;
   }
+}
+
+input::-moz-focus-inner {
+  border: 0;
 }
 
 @import "routes/_home";
