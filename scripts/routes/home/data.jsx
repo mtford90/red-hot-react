@@ -1,5 +1,5 @@
 /**
- * Raw data for the home screen
+ * Raw data for the 'features' displayed on the home page.
  */
 
 module.exports.features = [

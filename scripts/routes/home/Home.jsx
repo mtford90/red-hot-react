@@ -1,3 +1,7 @@
+/**
+ * The home route renders a Jumbotron and a list of features that are listed in ./data.jsx
+ */
+
 var React = require('react')
     , router = require('react-router')
     , Link = router.Link
@@ -5,6 +9,8 @@ var React = require('react')
     , Row = bootstrap.Row
     , Col = bootstrap.Col
     , data = require('./data')
+    , config = require('../../../app.config')
+    , DocumentTitle = require('react-document-title')
     , Jumbotron = bootstrap.Jumbotron;
 
 /**
@@ -62,24 +68,26 @@ var Features = React.createClass({
 var Home = React.createClass({
     render: function () {
         return (
-            <div id="home">
-                <Row>
-                    <Col md="12">
-                        <Jumbotron>
-                            <h1>
-                                <i className="fa fa-fire"></i>
-                            Red Hot React</h1>
-                            <p>
+            <DocumentTitle title={config.brand}>
+                <div id="home">
+                    <Row>
+                        <Col md="12">
+                            <Jumbotron>
+                                <h1>
+                                    <i className="fa fa-fire"></i>
+                                Red Hot React</h1>
+                                <p>
                                 A rather opinionated boilerplate for ReactJS, focusing on developer workflow in aid of rapid development and delivery.
-                            </p>
-                            <p>
-                                <Link to="About" className="btn btn-primary btn-lg" role="button">Learn more &raquo;</Link>
-                            </p>
-                        </Jumbotron>
-                    </Col>
-                </Row>
-                <Features features={data.features}/>
-            </div>
+                                </p>
+                                <p>
+                                    <Link to="About" className="btn btn-primary btn-lg" role="button">Learn more &raquo;</Link>
+                                </p>
+                            </Jumbotron>
+                        </Col>
+                    </Row>
+                    <Features features={data.features}/>
+                </div>
+            </DocumentTitle>
         );
     }
 });

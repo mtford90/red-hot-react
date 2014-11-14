@@ -1,8 +1,10 @@
-$sidebar-size: 250px;
-$sidebar-movement: 210px;
+/*
+Styling for the sidebar.
+*/
 
 @import "_transitions";
 @import "_responsive";
+@import "variables";
 
 #wrapper {
   height: 100%;
@@ -29,7 +31,7 @@ $sidebar-movement: 210px;
       @include transitions();
       height: 100%;
       overflow: hidden;
-      background: #832020;
+      background: $primary;
       position: absolute;
       width: $sidebar-size;
       top: 0;
@@ -49,7 +51,7 @@ $sidebar-movement: 210px;
           a {
             display: block;
             text-decoration: none;
-            color: #4c0808;
+            color: $tertiary;
 
             i {
               float: right;

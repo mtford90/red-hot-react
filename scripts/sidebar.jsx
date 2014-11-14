@@ -1,3 +1,7 @@
+/**
+ * This module implements the sidebar and all sidebar associated interactions.
+ */
+
 var React = require('react')
     , $ = require('jquery')
     , router = require('react-router')
@@ -16,10 +20,11 @@ var NavItem = React.createClass({
     }
 });
 
-
 function toggleSidebar() {
     var wrapper = $("#toggle-wrapper");
     wrapper.toggleClass("toggled");
+    // If the browser has implemented Storage we use this to remember whether the sidebar is open
+    // or closed for the next time the app is opened.
     if (typeof(Storage) !== 'undefined') {
         var classes = wrapper[0].className.split(/\s+/);
         if (classes.indexOf('toggled') > -1) {

@@ -1,8 +1,14 @@
+/*
+Point of entry for scss bundling
+*/
 // Moving bootstrap to styles.js speeds up considerably.
 // In our scss, we can then just import individual bootstrap components
-// when necessary.
+// when necessary. The downside to this is that we can end up with duplication of styling in our bundle.
+// If doing tons of bootstrap imports within your scss you should uncomment the below and remove bootstrap
+// from scripts/styles/vendor.js
 //@import "../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "_sidebar.scss";
+@import "variables";
 
 html, body {
   padding: 0;
@@ -29,10 +35,10 @@ body {
 }
 
 .btn-primary {
-  background-color: #832020;
+  background-color: $primary;
   border-width: 0;
   &:hover {
-    background-color: #A63F3F;
+    background-color: $secondary;
   }
 }
 

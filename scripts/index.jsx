@@ -19,7 +19,6 @@ var React = require('react'),
 /** Pack dem styles **/
 /*********************/
 
-
 // The toggle wrapper features the 'toggle' class which passes down styles to the sidebar and content wrapper
 // depending on whether or not toggle has been pressed.
 var ToggleWrapper = React.createClass({

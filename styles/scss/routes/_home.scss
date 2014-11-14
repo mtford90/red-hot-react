@@ -1,4 +1,9 @@
+/*
+Styles for the Home route.
+*/
+
 @import "../_responsive";
+@import "../variables";
 
 #home {
   .jumbotron {
@@ -7,7 +12,7 @@
     h1 {
       i {
         margin-right: 15px;
-        color: #832020;
+        color: $primary;
       }
     }
 

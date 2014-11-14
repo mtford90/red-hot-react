@@ -4,18 +4,14 @@
 
 var React = require('react');
 
-var Home = require('./routes/home/Home')
-    , About = require('./routes/About')
-    , Contact = require('./routes/Contact')
-    , NotFound = require('./routes/NotFound');
-
-var defaultRoute = {text: 'Home', icon: 'fa fa-home', handler: Home};
 var navigationItems = [
-    defaultRoute,
-    {text: 'About', icon: 'fa fa-question-circle', handler: About},
-    {text: 'Contact', icon: 'fa fa-envelope-o', handler: Contact}
+    {text: 'Home', icon: 'fa fa-home', handler: require('./routes/home/Home')},
+    {text: 'About', icon: 'fa fa-question-circle', handler: require('./routes/About')},
+    {text: 'Contact', icon: 'fa fa-envelope-o', handler: require('./routes/Contact')}
 ];
 
-module.exports.defaultRoute = defaultRoute;
+// These exports are used to configure the routing and the sidebar that visually represents
+// the routing.
+module.exports.defaultRoute = navigationItems[0];
 module.exports.navigationItems = navigationItems;
-module.exports.NotFound = NotFound;
+module.exports.NotFound = require('./routes/NotFound');
