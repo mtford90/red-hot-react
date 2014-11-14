@@ -11,10 +11,24 @@ A boilerplate configuration for ReactJS featuring:
         * CSS
 * Testing (Jest)
 * Compilation
+* Routing
+* Bootstrap
 
-Benefits:
+... and plenty more.
 
-* NO REFRESHING! You can maintain app state whilst experimenting with components and styling.
+Focus is on developer productivity and rapid delivery.
+
+# Quick start
+
+Run the following to get up and running in no time:
+
+```
+npm install
+bower install
+gulp watch
+```
+
+If all goes well, the app will launch in your default browser and you can start live editing straight away.
 
 # Gulp tasks
 
@@ -42,4 +56,4 @@ The production app can be served with `npm start` however you must ensure that `
 
 # Credits
 
-* [http://gaearon.github.io/react-hot-loader/](React Hot Loader tutorial)
+Checkout `dependencies` and `devDependencies` in the [package.json](https://github.com/mtford90/red-hot-react/blob/master/package.json)
