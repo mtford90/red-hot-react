@@ -83,18 +83,15 @@ var router = require('react-router')
     , DefaultRoute = router.DefaultRoute;
 
 // the dev global variable is injected by a really simple custom webpack plugin.
-var basePath = dev ? conf.basePath.dev : conf.basePath.prod;
-console.log('basePath', basePath);
-
 var RouterComponent = (
     <Routes>
-        <Route name="app" path={basePath} handler={App}>
+        <Route name="app" path='/' handler={App}>
             {routes.navigationItems.map(function (item, idx) {
                 return (<Route name={item.text} handler={item.handler} key={idx}/>);
             })}
             <DefaultRoute handler={routes.NotFound}/>
             <NotFoundRoute handler={routes.NotFound}/>
-            <Redirect path={basePath} to={routes.defaultRoute.text} />
+            <Redirect path='/' to={routes.defaultRoute.text} />
         </Route>
     </Routes>
 );

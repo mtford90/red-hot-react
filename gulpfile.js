@@ -153,7 +153,7 @@ gulp.task('compile', function () {
         .pipe(gulp.dest(publicDest));
     // Rename bundle.js to configured name.
     gulp.src(HTML_FILES)
-        .pipe(replace('scripts/bundle.js', conf.compilation.name))
+        .pipe(replace('http://localhost:3001/scripts/bundle.js', conf.compilation.name))
         .pipe(gulp.dest(publicDest));
 });
 
