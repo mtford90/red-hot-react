@@ -140,7 +140,6 @@ Styling for the sidebar.
       padding: 30px;
       @include transitions();
       margin-left: $sidebar-size - $sidebar-movement;
-      margin-top: -50px;
       position: relative;
       left: $sidebar-movement;
     }
