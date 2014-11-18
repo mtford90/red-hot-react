@@ -84,6 +84,7 @@ var router = require('react-router')
 
 // the dev global variable is injected by a really simple custom webpack plugin.
 var basePath = dev ? conf.basePath.dev : conf.basePath.prod;
+console.log('basePath', basePath);
 
 var RouterComponent = (
     <Routes>

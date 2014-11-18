@@ -1,5 +1,5 @@
 var express = require('express')
-    , app = express()
+    , app = require('./server')
     , conf = require('./dev.config')
     , open = require("open");
 
