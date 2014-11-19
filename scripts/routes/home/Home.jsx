@@ -77,7 +77,7 @@ var Home = React.createClass({
                                     <i className="fa fa-fire"></i>
                                 Red Hot React</h1>
                                 <p>
-                                An opionated boilerplate for ReactJS, focusing on developer workflow in aid of rapid development and delivery.
+                                An opinionated boilerplate for ReactJS, focusing on developer workflow in aid of rapid development and delivery.
                                 </p>
                                 <p>
                                     <Link to="About" className="btn btn-primary btn-lg" role="button">Learn more &raquo;</Link>
