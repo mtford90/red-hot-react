@@ -27,6 +27,8 @@ module.exports = {
         extensions: ext
     },
 
+    devtool: "inline-source-map",
+
     module: {
         loaders: [
             {
