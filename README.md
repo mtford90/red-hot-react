@@ -1,4 +1,4 @@
-live-react-boilerplate
+red-hot-react
 ======================
 
 A boilerplate configuration for ReactJS featuring:
@@ -57,3 +57,5 @@ The production app can be served with `npm start` however you must ensure that `
 # Credits
 
 Checkout `dependencies` and `devDependencies` in the [package.json](https://github.com/mtford90/red-hot-react/blob/master/package.json)
+
+https://github.com/Ehesp/Responsive-Dashboard (sidebar adaptation)
